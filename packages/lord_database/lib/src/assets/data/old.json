@@ -1,0 +1,586 @@
+[
+    {
+        "info": 1,
+        "title": "Aragorn",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01001.png"
+    },
+    {
+        "info": 2,
+        "title": "Théodred",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01002.png"
+    },
+    {
+        "info": 3,
+        "title": "Glóin",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01003.png"
+    },
+    {
+        "info": 4,
+        "title": "Gimli",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01004.png"
+    },
+    {
+        "info": 5,
+        "title": "Legolas",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01005.png"
+    },
+    {
+        "info": 6,
+        "title": "Thalin",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01006.png"
+    },
+    {
+        "info": 7,
+        "title": "Éowyn",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01007.png"
+    },
+    {
+        "info": 8,
+        "title": "Eleanor",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01008.png"
+    },
+    {
+        "info": 9,
+        "title": "Dúnhere",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01009.png"
+    },
+    {
+        "info": 10,
+        "title": "Denethor",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01010.png"
+    },
+    {
+        "info": 11,
+        "title": "Glorfindel",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01011.png"
+    },
+    {
+        "info": 12,
+        "title": "Beravor",
+        "type": "Héros",
+        "amount": 1,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01012.png"
+    },
+    {
+        "info": 13,
+        "title": "Garde de la Citadelle",
+        "type": "Allié",
+        "amount": 3,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01013.png"
+    },
+    {
+        "info": 14,
+        "title": "Faramir",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01014.png"
+    },
+    {
+        "info": 15,
+        "title": "Fils de l’Arnor",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01015.png"
+    },
+    {
+        "info": 16,
+        "title": "Éclaireur du Snowbourn",
+        "type": "Allié",
+        "amount": 3,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01016.png"
+    },
+    {
+        "info": 17,
+        "title": "Archer du Cours d’Argent",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01017.png"
+    },
+    {
+        "info": 18,
+        "title": "Tueur d’Orques Longue-Barbe",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01018.png"
+    },
+    {
+        "info": 19,
+        "title": "Brok Poing-de-Fer",
+        "type": "Allié",
+        "amount": 1,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01019.png"
+    },
+    {
+        "info": 20,
+        "title": "Toujours Vigilant",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01020.png"
+    },
+    {
+        "info": 21,
+        "title": "Cause Commune",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01021.png"
+    },
+    {
+        "info": 22,
+        "title": "Pour le Gondor !",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01022.png"
+    },
+    {
+        "info": 23,
+        "title": "Attaque Furtive",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01023.png"
+    },
+    {
+        "info": 24,
+        "title": "Sacrifice Héroïque",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01024.png"
+    },
+    {
+        "info": 25,
+        "title": "Détermination Acharnée",
+        "type": "Evénement",
+        "amount": 1,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01025.png"
+    },
+    {
+        "info": 26,
+        "title": "Intendant du Gondor",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01026.png"
+    },
+    {
+        "info": 27,
+        "title": "Pierre de Celebrían",
+        "type": "Attachement",
+        "amount": 1,
+        "sphere": "Commandement",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01027.png"
+    },
+    {
+        "info": 28,
+        "title": "Vétéran à la Hache",
+        "type": "Allié",
+        "amount": 3,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01028.png"
+    },
+    {
+        "info": 29,
+        "title": "Lancier Gondorien",
+        "type": "Allié",
+        "amount": 3,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01029.png"
+    },
+    {
+        "info": 30,
+        "title": "Archer à Cheval",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01030.png"
+    },
+    {
+        "info": 31,
+        "title": "Beorn",
+        "type": "Allié",
+        "amount": 1,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01031.png"
+    },
+    {
+        "info": 32,
+        "title": "Maîtrise des Armes",
+        "type": "Evénement",
+        "amount": 3,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01032.png"
+    },
+    {
+        "info": 33,
+        "title": "Pluie de Flèches",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01033.png"
+    },
+    {
+        "info": 34,
+        "title": "Feinte",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01034.png"
+    },
+    {
+        "info": 35,
+        "title": "Coup Rapide",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01035.png"
+    },
+    {
+        "info": 36,
+        "title": "Haie de Lances",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01036.png"
+    },
+    {
+        "info": 37,
+        "title": "Coup Brutal",
+        "type": "Evénement",
+        "amount": 1,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01037.png"
+    },
+    {
+        "info": 38,
+        "title": "Faire Face Ensemble",
+        "type": "Evénement",
+        "amount": 1,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01038.png"
+    },
+    {
+        "info": 39,
+        "title": "Lame de Gondolin",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01039.png"
+    },
+    {
+        "info": 40,
+        "title": "Armure de la Citadelle",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01040.png"
+    },
+    {
+        "info": 41,
+        "title": "Hache de Nain",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01041.png"
+    },
+    {
+        "info": 42,
+        "title": "Cor du Gondor",
+        "type": "Attachement",
+        "amount": 1,
+        "sphere": "Tactique",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01042.png"
+    },
+    {
+        "info": 43,
+        "title": "Touque Aventureux",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01043.png"
+    },
+    {
+        "info": 44,
+        "title": "Guide de la Lórien",
+        "type": "Allié",
+        "amount": 3,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01044.png"
+    },
+    {
+        "info": 45,
+        "title": "Traqueur du Nord",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01045.png"
+    },
+    {
+        "info": 46,
+        "title": "Salutations des Galadhrim",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01046.png"
+    },
+    {
+        "info": 47,
+        "title": "Force de la Volonté",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01047.png"
+    },
+    {
+        "info": 48,
+        "title": "Coup Précipité",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01048.png"
+    },
+    {
+        "info": 49,
+        "title": "Volonté de l’Ouest",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01049.png"
+    },
+    {
+        "info": 50,
+        "title": "Tester sa Volonté",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01050.png"
+    },
+    {
+        "info": 51,
+        "title": "Tenir et Combattre",
+        "type": "Evénement",
+        "amount": 3,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01051.png"
+    },
+    {
+        "info": 52,
+        "title": "Une Lumière dans les Ténèbres",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01052.png"
+    },
+    {
+        "info": 53,
+        "title": "Tombe de Nain",
+        "type": "Evénement",
+        "amount": 1,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01053.png"
+    },
+    {
+        "info": 54,
+        "title": "Chance ou Destin",
+        "type": "Evénement",
+        "amount": 1,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01054.png"
+    },
+    {
+        "info": 55,
+        "title": "La Faveur de la Dame",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01055.png"
+    },
+    {
+        "info": 56,
+        "title": "Le Pouvoir de la Terre",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01056.png"
+    },
+    {
+        "info": 57,
+        "title": "Courage Inattendu",
+        "type": "Attachement",
+        "amount": 1,
+        "sphere": "Énergie",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01057.png"
+    },
+    {
+        "info": 58,
+        "title": "Fille de la Nimrodel",
+        "type": "Allié",
+        "amount": 3,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01058.png"
+    },
+    {
+        "info": 59,
+        "title": "Forgeron d’Erebor",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01059.png"
+    },
+    {
+        "info": 60,
+        "title": "Henamarth Chantrivière",
+        "type": "Allié",
+        "amount": 1,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01060.png"
+    },
+    {
+        "info": 61,
+        "title": "Mineurs des Mont du Fer",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01061.png"
+    },
+    {
+        "info": 62,
+        "title": "Gléowine",
+        "type": "Allié",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01062.png"
+    },
+    {
+        "info": 63,
+        "title": "Savoir d’Imladris",
+        "type": "Evénement",
+        "amount": 3,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01063.png"
+    },
+    {
+        "info": 64,
+        "title": "Opulence de la Lórien",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01064.png"
+    },
+    {
+        "info": 65,
+        "title": "Ruse de Radagast",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01065.png"
+    },
+    {
+        "info": 66,
+        "title": "Chemins Secrets",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01066.png"
+    },
+    {
+        "info": 67,
+        "title": "Recherches de Gandalf",
+        "type": "Evénement",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01067.png"
+    },
+    {
+        "info": 68,
+        "title": "Hospitalité de Beorn",
+        "type": "Evénement",
+        "amount": 1,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01068.png"
+    },
+    {
+        "info": 69,
+        "title": "Danger de la Forêt",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01069.png"
+    },
+    {
+        "info": 70,
+        "title": "Protecteur de la Lórien",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01070.png"
+    },
+    {
+        "info": 71,
+        "title": "Savoir Ténébreux",
+        "type": "Attachement",
+        "amount": 1,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01071.png"
+    },
+    {
+        "info": 72,
+        "title": "Instinct de Survie",
+        "type": "Attachement",
+        "amount": 2,
+        "sphere": "Connaissance",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01072.png"
+    },
+    {
+        "info": 73,
+        "title": "Gandalf",
+        "type": "Allié",
+        "amount": 4,
+        "sphere": "Neutre",
+        "imageUrl": "https://ringsdb.com/bundles/cards/01073.png"
+    }
+]

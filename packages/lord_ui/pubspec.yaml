@@ -1,0 +1,21 @@
+name: lord_ui
+publish_to: 'none'
+
+environment:
+  sdk: ">=3.2.5 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  lord_repository:
+    path: ../lord_repository
+  provider: ^6.1.1
+  mocktail: ^1.0.3
+  google_fonts: ^6.2.1
+  lord_component_library:
+    path: ../lord_component_library
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0

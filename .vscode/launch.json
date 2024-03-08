@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "Prepare Database",
+            "type": "dart",
+            "request": "launch",
+            "cwd": "packages\\lord_database\\example",
+            "program": "lib\\main.dart"
+        },
+        {
+            "name": "Component Library",
+            "type": "dart",
+            "request": "launch",
+            "cwd": "packages\\lord_component_library\\example",
+            "program": "lib\\main.dart",
+            "args": [
+                "--web-renderer",
+                "html"
+            ]
+        },
+        {
+            "name": "Main File",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib\\main.dart",
+            "args": ["--web-renderer", "html"]
+        }
+    ]
+}

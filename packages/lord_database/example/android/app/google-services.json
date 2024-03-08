@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "943834015538",
+    "firebase_url": "https://lord-of-the-rings-card-game-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "lord-of-the-rings-card-game",
+    "storage_bucket": "lord-of-the-rings-card-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943834015538:android:d13cfb6076a3340fbd192b",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3-X2Zj6igac_pVs8kKxx0awM9Ulrtqmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943834015538:android:28a9715ff4f0506abd192b",
+        "android_client_info": {
+          "package_name": "com.example.example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3-X2Zj6igac_pVs8kKxx0awM9Ulrtqmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943834015538:android:eb9d9f71a62b3a1abd192b",
+        "android_client_info": {
+          "package_name": "com.example.preparedatabase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3-X2Zj6igac_pVs8kKxx0awM9Ulrtqmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

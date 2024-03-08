@@ -1,0 +1,3 @@
+linter:
+  rules:
+    - must_be_immutable: false

@@ -1,0 +1,32 @@
+name: lord_component_library
+description: The lord component library for flutter
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  storybook_flutter: ^0.14.0
+  google_fonts: ^6.1.0
+  cached_network_image: ^3.3.1
+  provider: ^6.1.2
+  lord_ui:
+    path: ../lord_ui
+  lord_repository:
+    path: ../lord_repository
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+      - lib/src/assets/
