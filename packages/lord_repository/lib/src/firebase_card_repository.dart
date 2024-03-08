@@ -105,4 +105,34 @@ class FirebaseCardRepository implements CardRepository {
 
     return completer.future;
   }
+  
+  @override
+  Future<Card> addCard(Card card) async {
+    final completer = Completer<Card>();
+
+    try {
+      final httpClient = client ?? http.Client();
+
+      final parsedUrl = Uri.parse('$url.json');
+
+      final response = await httpClient.post(parsedUrl, body: jsonEncode(card.toModel().toJson()));
+
+      final statusCode = response.statusCode;
+
+      if (statusCode != 200) {
+        throw Exception(statusCode);
+      }
+
+      final data = jsonDecode(response.body);
+
+      if (data != null) {
+        final newCard = Card.fromModel(CardModel.fromJson(data).copyWith(id: data['name']));
+        completer.complete(newCard);
+      }
+
+    } catch (e) {
+      completer.completeError(e);
+    }
+    return completer.future;
+  }
 }

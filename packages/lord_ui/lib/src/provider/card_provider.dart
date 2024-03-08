@@ -50,4 +50,14 @@ class CardProvider extends ChangeNotifier {
       throw Exception(e);
     }
   }
+
+  Future<void> addCard(Card card) async {
+    try {
+      final data = await _repository.addCard(card);
+      _cards.add(data);
+      notifyListeners();
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }
