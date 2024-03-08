@@ -3,16 +3,16 @@ import 'package:lord_repository/lord_repository.dart';
 import 'package:lord_ui/lord_ui.dart';
 import 'package:provider/provider.dart';
 
-class EditScreen extends StatefulWidget {
-  static const routeName = '/edit';
+class AddScreen extends StatefulWidget {
+  static const routeName = '/add';
 
-  const EditScreen();
+  const AddScreen();
 
   @override
-  _EditScreenState createState() => _EditScreenState();
+  _AddScreenState createState() => _AddScreenState();
 }
 
-class _EditScreenState extends State<EditScreen> {
+class _AddScreenState extends State<AddScreen> {
   
   TextEditingController _nameController = TextEditingController();
   TextEditingController _idController = TextEditingController();
@@ -31,27 +31,14 @@ class _EditScreenState extends State<EditScreen> {
   TextEditingController _packCodeController = TextEditingController();
   TextEditingController _packNameController = TextEditingController();
 
-  bool _isInit = true;
   var _emptyCard = Card.empty;
   final _form = GlobalKey<FormState>();
 
-  void _saveAndEdit() {
+  void _saveAndAdd() {
     if (_form.currentState!.validate()) {
       _form.currentState!.save();
-      Provider.of<CardProvider>(context, listen: false).updateCard(_emptyCard);
+      Provider.of<CardProvider>(context, listen: false).addCard(_emptyCard);
       Navigator.of(context).pop();
-    }
-  }
-
-  @override
-  void didChangeDependencies() {
-    if (_isInit) {
-      final card = ModalRoute.of(context)!.settings.arguments as Card;
-      if (card.id != null) {
-        _emptyCard = Provider.of<CardProvider>(context, listen: false)
-            .findById(card.id!);
-      }
-      super.didChangeDependencies();
     }
   }
 
@@ -79,24 +66,6 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final card = ModalRoute.of(context)!.settings.arguments as Card;
-
-    _nameController.text = card.name ?? '';
-    _idController.text = card.id ?? '';
-    _costController.text = card.cost ?? '';
-    _quantityController.text = card.quantity.toString();
-    _deckLimitController.text = card.deck_limit.toString();
-    _illustratorController.text = card.illustrator ?? '';
-    _hasErrataController.text = card.has_errata.toString();
-    _urlController.text = card.url ?? '';
-    _imageSrcController.text = card.imagesrc ?? '';
-    _textController.text = card.text ?? '';
-    _codeController.text = card.code ?? '';
-    _positionController.text = card.position.toString();
-    _sphereNameController.text = card.sphere_name ?? '';
-    _typeNameController.text = card.type_name ?? '';
-    _packCodeController.text = card.pack_code ?? '';
-    _packNameController.text = card.pack_name ?? '';
 
     return Scaffold(
       appBar: AppBar(
@@ -239,7 +208,7 @@ class _EditScreenState extends State<EditScreen> {
               },
             ),
             ElevatedButton(
-                    onPressed: _saveAndEdit,
+                    onPressed: _saveAndAdd,
                     child: Text('Save'),
                   )
           ],

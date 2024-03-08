@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Card;
 import 'package:lord_ui/lord_ui.dart';
 import 'package:provider/provider.dart';
 
@@ -22,11 +22,10 @@ class _OverviewEditScreenState extends State<OverviewEditScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              throw UnimplementedError();
-              // Navigator.pushNamed(         ||
-              //   context,                   ||===> To add a new card
-              //   EditScreen.routeName,      ||
-              // );                           ||
+              Navigator.pushNamed(         
+                context,                   
+                AddScreen.routeName,    
+              );                           
             },
             icon: const Icon(Icons.add),
           ),

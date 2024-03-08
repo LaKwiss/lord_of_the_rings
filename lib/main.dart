@@ -29,6 +29,8 @@ class MyApp extends StatelessWidget {
           DeckNameChooserScreen.routeName: (context) => DeckNameChooserScreen(),
           OverviewEditScreen.routeName: (context) => const OverviewEditScreen(),
           EditScreen.routeName: (context) => const EditScreen(),
+          AddScreen.routeName: (context) => const AddScreen(),
+
         },
       ),
     );
