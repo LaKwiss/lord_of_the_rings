@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
           OverviewEditScreen.routeName: (context) => const OverviewEditScreen(),
           EditScreen.routeName: (context) => const EditScreen(),
           AddScreen.routeName: (context) => const AddScreen(),
-
         },
       ),
     );

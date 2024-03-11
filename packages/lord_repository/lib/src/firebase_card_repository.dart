@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:lord_repository/lord_repository.dart';
 import 'package:http/http.dart' as http;
 import 'dart:developer' as dev;
@@ -14,6 +15,7 @@ class FirebaseCardRepository implements CardRepository {
 
   @override
   Future<List<Card>> getAllCards() async {
+    final completer = Completer<List<Card>>();
     try {
       final List<Card> cards = [];
 
@@ -41,12 +43,16 @@ class FirebaseCardRepository implements CardRepository {
           },
         );
       }
-
-      dev.log(cards.length.toString());
-      return cards;
+      completer.complete(cards);
+    } on HttpException catch (_) {
+      completer.completeError('Page non trouvée');
+    } on SocketException catch (_) {
+      completer.completeError('Pas de connexion internet');
     } catch (e) {
-      throw Exception(e);
+      completer.completeError(e);
     }
+
+    return completer.future;
   }
 
   @override
@@ -75,6 +81,10 @@ class FirebaseCardRepository implements CardRepository {
             Card.fromModel(CardModel.fromJson(data).copyWith(id: card.id));
         completer.complete(updatedCard);
       }
+    } on HttpException catch (_) {
+      completer.completeError('Page non trouvée');
+    } on SocketException catch (_) {
+      completer.completeError('Pas de connexion internet');
     } catch (e) {
       completer.completeError(e);
     }
@@ -99,13 +109,17 @@ class FirebaseCardRepository implements CardRepository {
       }
 
       completer.complete(card);
+    } on HttpException catch (_) {
+      completer.completeError('Page non trouvée');
+    } on SocketException catch (_) {
+      completer.completeError('Pas de connexion internet');
     } catch (e) {
       completer.completeError(e);
     }
 
     return completer.future;
   }
-  
+
   @override
   Future<Card> addCard(Card card) async {
     final completer = Completer<Card>();
@@ -115,7 +129,8 @@ class FirebaseCardRepository implements CardRepository {
 
       final parsedUrl = Uri.parse('$url.json');
 
-      final response = await httpClient.post(parsedUrl, body: jsonEncode(card.toModel().toJson()));
+      final response = await httpClient.post(parsedUrl,
+          body: jsonEncode(card.toModel().toJson()));
 
       final statusCode = response.statusCode;
 
@@ -126,10 +141,14 @@ class FirebaseCardRepository implements CardRepository {
       final data = jsonDecode(response.body);
 
       if (data != null) {
-        final newCard = Card.fromModel(CardModel.fromJson(data).copyWith(id: data['name']));
+        final newCard =
+            Card.fromModel(CardModel.fromJson(data).copyWith(id: data['name']));
         completer.complete(newCard);
       }
-
+    } on HttpException catch (_) {
+      completer.completeError('Page non trouvée');
+    } on SocketException catch (_) {
+      completer.completeError('Pas de connexion internet');
     } catch (e) {
       completer.completeError(e);
     }

@@ -25,6 +25,22 @@ class DeckModel extends Equatable {
     );
   }
 
+  DeckModel copyWith({String? id, String? name, List<int>? listCardsIds}) {
+    return DeckModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      listCardsIds: listCardsIds ?? this.listCardsIds,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'listCardsIds': listCardsIds,
+    };
+  }
+
   @override
   List<Object?> get props => [id, name, listCardsIds];
 }

@@ -20,4 +20,20 @@ class Deck extends Equatable {
       model.listCardsIds,
     );
   }
+
+  DeckModel toModel() {
+    return DeckModel(
+      id: id,
+      name: name,
+      listCardsIds: listCardsIds,
+    );
+  }
+
+  Deck copyWith({String? id, String? name, List<int>? listCardsIds}) {
+    return Deck(
+      id ?? this.id,
+      name ?? this.name,
+      listCardsIds ?? this.listCardsIds,
+    );
+  }
 }
