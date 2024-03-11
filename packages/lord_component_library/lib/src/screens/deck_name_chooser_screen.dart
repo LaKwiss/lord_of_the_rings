@@ -74,28 +74,8 @@ class _DeckNameChooserScreenState extends State<DeckNameChooserScreen> {
             left: 100,
             child: ElevatedButton(
               onPressed: () {
-                if (deckProvider.decks
-                    .any((deck) => deck.name == _nameController.text)) {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                            title: Text('Deck already exists'),
-                            content: Text('Please choose a different name'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, HomeScreen.routeName);
-                                },
-                                child: Text('Ok'),
-                              ),
-                            ]);
-                      });
-                } else {
-                  deckProvider.addDeck(_nameController.text);
-                  Navigator.of(context).pop();
-                }
+                deckProvider.createDeck(_nameController.text);
+                Navigator.of(context).pushNamed(DeckBuilder.routeName);
               },
               child: Text('Create Deck'),
             ),

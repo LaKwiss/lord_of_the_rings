@@ -78,11 +78,11 @@ class CardsGrid extends StatelessWidget {
         imageUrl: cards[index].imagesrc,
         name: cards[index].name,
         onSelected: () {
-          if (myDeck.listCardsIds.contains(index)) {
-            myDeck.listCardsIds.remove(index);
-          } else {
-            myDeck.listCardsIds.add(index);
-          }
+          // if (myDeck.listCardsIds.contains(index)) {
+          //   myDeck.listCardsIds.remove(index);
+          // } else {
+          //   myDeck.listCardsIds.add(index);
+          // }
           dev.log(myDeck.toString());
         },
       ),

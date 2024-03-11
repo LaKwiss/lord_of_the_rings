@@ -8,7 +8,7 @@ class Deck extends Equatable {
 
   final String id;
   final String name;
-  List<int> listCardsIds = [];
+  List<int>? listCardsIds = [];
 
   @override
   List<Object?> get props => [name, listCardsIds];
