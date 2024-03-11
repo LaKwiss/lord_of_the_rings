@@ -1,3 +1,4 @@
+import 'package:lord_component_library/component_library.dart';
 import 'package:lord_ui/lord_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,17 +34,59 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Color(0xFFD1B590),
       appBar: AppBar(
         title: const Text('Lotr Card Game'),
-        actions: [
-          IconButton(
-              onPressed: () => Navigator.of(context).pushNamed('/deckBuilder'),
-              icon: const Icon(Icons.add))
-        ],
       ),
       body: Stack(
         children: [
           Center(
-            child: Image.asset(
-              svg, // SVG not working ==> Package flutter_svg.dart
+            child: Image.asset(svg /* SVG not working ==> flutter_svg.dart*/),
+          ),
+          Positioned(
+            top: 220,
+            right: 800,
+            child: Tooltip(
+              message: 'Calculator',
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed(Calculator.routeName);
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  color: Color(0xFFf7daab),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 220,
+            left: 840,
+            child: Tooltip(
+              message: 'Cards List',
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed(OverviewEditScreen.routeName);
+                },
+                child:
+                    Container(height: 50, width: 50, color: Color(0xffac928a)),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 350,
+            right: 895,
+            child: Tooltip(
+              message: 'Create Deck',
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context)
+                      .pushNamed(DeckNameChooserScreen.routeName);
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  color: Color(0xff83e8b9),
+                ),
+              ),
             ),
           ),
         ],

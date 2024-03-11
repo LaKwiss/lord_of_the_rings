@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:lord_repository/lord_repository.dart';
 import 'package:http/http.dart' as http;
-import 'dart:developer' as dev;
 
 class FirebaseCardRepository implements CardRepository {
   static const url =
@@ -32,14 +31,11 @@ class FirebaseCardRepository implements CardRepository {
       if (data != null) {
         data.forEach(
           (cardId, cardData) {
-            dev.log(cardId);
-            dev.log(cardData.toString());
             cards.add(
               Card.fromModel(
                 CardModel.fromJson(cardData).copyWith(id: cardId),
               ),
             );
-            dev.log(cardId.toString());
           },
         );
       }
