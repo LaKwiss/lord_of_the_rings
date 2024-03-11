@@ -55,21 +55,21 @@ class FirebaseDeckRepository implements DeckRepository {
   }
 
   @override
-  Future<Deck> addDeck(Deck deck, int id) async {
+  Future<Deck> addDeck(Deck deck) async {
     final completer = Completer<Deck>();
 
     try {
       final httpClient = client ?? http.Client();
 
-      final parsedUrl = Uri.parse('$url/$id.json');
+      final parsedUrl = Uri.parse('$url.json');
 
-      final response = await httpClient.post(
-        parsedUrl,
-        body: jsonEncode(DeckModel.toJson(deck.toModel())),
-      );
+      final response = await httpClient.post(parsedUrl,
+          body: jsonEncode(deck.toModel().toJson()));
 
-      if (response.statusCode != 200) {
-        completer.completeError(Exception(response.statusCode));
+      final statusCode = response.statusCode;
+
+      if (statusCode != 200) {
+        throw Exception(statusCode);
       }
 
       final data = jsonDecode(response.body);
@@ -79,6 +79,10 @@ class FirebaseDeckRepository implements DeckRepository {
             Deck.fromModel(DeckModel.fromJson(data).copyWith(id: data['name']));
         completer.complete(newDeck);
       }
+    } on HttpException catch (_) {
+      completer.completeError('Page non trouvée');
+    } on SocketException catch (_) {
+      completer.completeError('Pas de connexion internet');
     } catch (e) {
       completer.completeError(e);
     }
@@ -86,22 +90,26 @@ class FirebaseDeckRepository implements DeckRepository {
   }
 
   @override
-  Future<void> deleteDeck(int id) async {
-    final completer = Completer<void>();
+  Future<Deck> deleteDeck(Deck deck) async {
+    final completer = Completer<Deck>();
 
     try {
       final httpClient = client ?? http.Client();
 
-      final parsedUrl = Uri.parse('$url/$id.json');
+      final parsedUrl = Uri.parse('$url/${deck.id}.json');
 
       final response = await httpClient.delete(parsedUrl);
       final statusCode = response.statusCode;
 
       if (statusCode != 200) {
-        completer.completeError(Exception(statusCode));
+        throw Exception(statusCode);
       }
 
-      completer.complete();
+      completer.complete(deck);
+    } on HttpException catch (_) {
+      completer.completeError('Page non trouvée');
+    } on SocketException catch (_) {
+      completer.completeError('Pas de connexion internet');
     } catch (e) {
       completer.completeError(e);
     }

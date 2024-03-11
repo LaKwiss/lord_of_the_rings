@@ -19,6 +19,7 @@ dependencies:
     path: ../lord_ui
   lord_repository:
     path: ../lord_repository
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:

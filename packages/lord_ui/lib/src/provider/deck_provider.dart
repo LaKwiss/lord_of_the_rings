@@ -21,7 +21,6 @@ class DeckProvider extends ChangeNotifier {
 
   Future<void> addCardToDeck(Deck deck, int id) async {
     try {
-      //TODO: Add deck into database
       deck.listCardsIds.add(id);
       notifyListeners();
     } catch (e) {
@@ -30,7 +29,10 @@ class DeckProvider extends ChangeNotifier {
   }
 
   Future<void> removeCardFromDeck(Deck deck, int id) async {
-    try {} catch (e) {
+    try {
+      deck.listCardsIds.remove(id);
+      notifyListeners();
+    } catch (e) {
       throw Exception(e);
     }
   }
@@ -39,6 +41,15 @@ class DeckProvider extends ChangeNotifier {
     try {
       final Deck deck = Deck(DateTime.now().toString(), name, const []);
       _decks.add(deck);
+      notifyListeners();
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<void> deleteDeck(Deck deck) async {
+    try {
+      _decks.removeWhere((element) => element.id == deck.id);
       notifyListeners();
     } catch (e) {
       throw Exception(e);
