@@ -10,15 +10,16 @@ class DeckProvider extends ChangeNotifier {
   List<Deck> get decks => _decks;
 
   Future<void> fetchAndSetDecks() async {
-    // try {
-    //   dev.log('fetchAndSetDecks');
-    //   final List<Deck> decks = await _repository.getAllDecks();
-    //   _decks.clear();
-    //   _decks.addAll(decks);
-    //   notifyListeners();
-    // } catch (e) {
-    //   throw Exception(e);
-    // }
+    try {
+      dev.log('fetchAndSetDecks 1');
+      final List<Deck> decks = await _repository.getAllDecks();
+      dev.log(decks.toString());
+      _decks.clear();
+      _decks.addAll(decks);
+      notifyListeners();
+    } catch (e) {
+      throw Exception(e);
+    }
     dev.log('fetchAndSetDecks');
   }
 
@@ -41,8 +42,9 @@ class DeckProvider extends ChangeNotifier {
   }
 
   Future<void> addDeck(String name) async {
+    final toto = <int>[]; // empty list of ints
     try {
-      final deckToAdd = Deck('hello', name, const [1, 2, 3]);
+      final deckToAdd = Deck('hello', name, toto);
       final deck = await _repository.addDeck(deckToAdd);
       _decks.add(deck);
       notifyListeners();

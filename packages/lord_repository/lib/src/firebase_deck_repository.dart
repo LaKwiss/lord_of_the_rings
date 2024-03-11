@@ -31,7 +31,7 @@ class FirebaseDeckRepository implements DeckRepository {
       }
 
       final jsonString = response.body;
-      final data = jsonDecode(jsonString);
+      final data = jsonDecode(jsonString) as Map<String, dynamic>;
 
       if (data != null) {
         data.forEach(
@@ -46,7 +46,7 @@ class FirebaseDeckRepository implements DeckRepository {
       }
       completer.complete(decks);
       if (decks.isEmpty) {
-        dev.log('No decks found');
+        completer.completeError('No decks found');
       }
     } on HttpException catch (_) {
       completer.completeError('Page non trouvée');
