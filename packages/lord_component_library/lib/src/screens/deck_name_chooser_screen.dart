@@ -3,37 +3,25 @@ import 'package:lord_component_library/component_library.dart';
 import 'package:provider/provider.dart';
 import 'package:lord_ui/lord_ui.dart';
 
-class DeckNameChooserScreen extends StatelessWidget {
+class DeckNameChooserScreen extends StatefulWidget {
+  static const routeName = '/deckNameChooserScreen';
+
+  @override
+  State<DeckNameChooserScreen> createState() => _DeckNameChooserScreenState();
+}
+
+class _DeckNameChooserScreenState extends State<DeckNameChooserScreen> {
   final TextEditingController _nameController = TextEditingController();
 
-  static const routeName = '/deckNameChooserScreen';
+  @override
+  void didChangeDependencies() async {
+    await Provider.of<DeckProvider>(context, listen: false).fetchAndSetDecks();
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
     final deckProvider = Provider.of<DeckProvider>(context);
-
-    void addDeck() {
-      if (deckProvider.decks.any((deck) => deck.name == _nameController.text)) {
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                  title: Text('Deck already exists'),
-                  content: Text('Please choose a different name'),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text('Ok'),
-                    ),
-                  ]);
-            });
-      } else {
-        deckProvider.addDeck(_nameController.text);
-        Navigator.of(context).pop();
-      }
-    }
 
     return Scaffold(
       backgroundColor: Color(0xff2d6087),
@@ -86,7 +74,28 @@ class DeckNameChooserScreen extends StatelessWidget {
             left: 100,
             child: ElevatedButton(
               onPressed: () {
-                addDeck();
+                if (deckProvider.decks
+                    .any((deck) => deck.name == _nameController.text)) {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                            title: Text('Deck already exists'),
+                            content: Text('Please choose a different name'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, HomeScreen.routeName);
+                                },
+                                child: Text('Ok'),
+                              ),
+                            ]);
+                      });
+                } else {
+                  deckProvider.addDeck(_nameController.text);
+                  Navigator.of(context).pop();
+                }
               },
               child: Text('Create Deck'),
             ),

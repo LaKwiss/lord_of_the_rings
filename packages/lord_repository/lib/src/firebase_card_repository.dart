@@ -21,6 +21,7 @@ class FirebaseCardRepository implements CardRepository {
       final parsedUrl = Uri.parse('$url.json');
       final response = await http.get(parsedUrl);
       final statusCode = response.statusCode;
+
       if (statusCode != 200) {
         throw Exception(statusCode);
       }

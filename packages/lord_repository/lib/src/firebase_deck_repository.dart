@@ -6,6 +6,8 @@ import 'package:lord_repository/lord_repository.dart';
 import 'package:lord_repository/src/models/deck_model.dart';
 import 'package:http/http.dart' as http;
 
+import 'dart:developer' as dev;
+
 class FirebaseDeckRepository implements DeckRepository {
   static const url =
       'https://lord-of-the-rings-card-game-default-rtdb.europe-west1.firebasedatabase.app/deck';
@@ -43,6 +45,9 @@ class FirebaseDeckRepository implements DeckRepository {
         );
       }
       completer.complete(decks);
+      if (decks.isEmpty) {
+        dev.log('No decks found');
+      }
     } on HttpException catch (_) {
       completer.completeError('Page non trouvée');
     } on SocketException catch (_) {

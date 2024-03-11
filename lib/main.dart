@@ -23,13 +23,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          '/': (context) => const HomeScreen(),
           DeckBuilder.routeName: (context) => DeckBuilder(),
           Calculator.routeName: (context) => Calculator(),
           DeckNameChooserScreen.routeName: (context) => DeckNameChooserScreen(),
           OverviewEditScreen.routeName: (context) => const OverviewEditScreen(),
           EditScreen.routeName: (context) => const EditScreen(),
           AddScreen.routeName: (context) => const AddScreen(),
+          '/': (context) => const HomeScreen(),
         },
       ),
     );

@@ -11,9 +11,9 @@ class DeckModel extends Equatable {
 
   factory DeckModel.fromJson(Map<String, dynamic> json) {
     return DeckModel(
-      id: json['id'],
-      name: json['name'],
-      listCardsIds: json['listCardsIds'],
+      id: json['id'] ?? '',
+      name: json['name'] ?? '',
+      listCardsIds: json['listCardsIds'] ?? [],
     );
   }
 
