@@ -1,6 +1,5 @@
 import 'package:lord_repository/lord_repository.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as dev;
 
 class DeckProvider extends ChangeNotifier {
   DeckProvider(this._repository);
@@ -11,52 +10,22 @@ class DeckProvider extends ChangeNotifier {
 
   Future<void> fetchAndSetDecks() async {
     try {
-      dev.log('fetchAndSetDecks 1');
       final List<Deck> decks = await _repository.getAllDecks();
-      dev.log(decks.toString());
       _decks.clear();
       _decks.addAll(decks);
       notifyListeners();
     } catch (e) {
       throw Exception(e);
     }
-    dev.log('fetchAndSetDecks');
   }
 
-  Future<void> addCardToDeck(Deck deck, int id) async {
-    try {
-      deck.listCardsIds.add(id);
-      notifyListeners();
-    } catch (e) {
-      throw Exception(e);
-    }
-  }
+  Future<void> createDeck(String name) async {
+    final toto = Deck('1', name, [1, 1, 1, 1, 1]);
 
-  Future<void> removeCardFromDeck(Deck deck, int id) async {
     try {
-      deck.listCardsIds.remove(id);
-      notifyListeners();
-    } catch (e) {
-      throw Exception(e);
-    }
-  }
-
-  Future<void> addDeck(String name) async {
-    final toto = <int>[]; // empty list of ints
-    try {
-      final deckToAdd = Deck('hello', name, toto);
-      final deck = await _repository.addDeck(deckToAdd);
+      final deck = await _repository.createDeck(
+          toto); // Still create an error : Error: Exception: TypeError: null: type 'Null' is not a subtype of type 'String'
       _decks.add(deck);
-      notifyListeners();
-    } catch (e) {
-      dev.log(e.toString());
-      throw Exception(e);
-    }
-  }
-
-  Future<void> deleteDeck(Deck deck) async {
-    try {
-      _decks.removeWhere((element) => element.id == deck.id);
       notifyListeners();
     } catch (e) {
       throw Exception(e);
