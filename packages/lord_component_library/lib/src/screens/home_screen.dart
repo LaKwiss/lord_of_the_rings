@@ -1,5 +1,3 @@
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lord_component_library/component_library.dart';
 import 'package:lord_ui/lord_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   static const String svg =
-      'packages/lord_component_library/lib/src/assets/homescreen.svgg';
+      'packages/lord_component_library/lib/src/assets/homescreen.png';
 
   var _isInit = true;
   @override
@@ -32,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFD1B590),
       appBar: AppBar(
         title: const Text('Lotr Card Game'),
         actions: [
@@ -41,7 +40,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Stack(
-        children: [SvgPicture.asset(svg)],
+        children: [
+          Center(
+            child: Image.asset(
+              svg, // SVG not working ==> Package flutter_svg.dart
+            ),
+          ),
+        ],
       ),
     );
   }
