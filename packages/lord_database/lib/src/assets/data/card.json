@@ -335,7 +335,7 @@
             "code": "01013",
             "name": "Guard of the Citadel",
             "traits": "Gondor. Warrior.",
-            "text": "test", 
+            "text": "test",
             "flavor": "\"But the Lords of Minas Tirith still fight on, defying our enemies, keeping the passage of the River from Argonath to the Sea.\"\n<cite>Elrond, The Fellowship of the Ring<\/cite>",
             "is_unique": false,
             "cost": "2",
@@ -33042,27 +33042,26 @@
             "url": "https://ringsdb.com/card\/99305150",
             "imagesrc": "https://ringsdb.com/bundles/cards\/99305150.png"
         }
-    ] ,
-
+    ],
     "scenario": [
         {
-            "difficulty": 7,
-            "name": "Évasion de Dol Guldur"
+            "id": 1,
+            "name": "Évasion de Dol Guldur",
+            "description": "Description de l'évasion de Dol Guldur",
+            "imagesrc": "none"
         },
         {
             "difficulty": 1,
-            "name": "Passage dans la Forêt Noire"
+            "name": "Passage dans la Forêt Noire",
+            "description": "Description du passage dans la forêt noire",
+            "imagesrc": "none"
         },
         {
             "difficulty": 4,
-            "name": "Voyage le long de l'Anduin"
+            "name": "Voyage le long de l'Anduin",
+            "description": "Description du voyage le long de l'Anduin",
+            "imagesrc": "none"
         }
-    ], 
-
-    "deck": [
-        {
-            "id": "Deck 1",
-            "name": "Description 1",
-            "listCardsIds": []
-}]
+    ],
+    "deck": []
 }

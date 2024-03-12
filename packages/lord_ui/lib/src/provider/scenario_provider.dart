@@ -1,5 +1,6 @@
 import 'package:lord_repository/lord_repository.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as dev;
 
 class ScenarioProvider extends ChangeNotifier {
   ScenarioProvider(this._repository);
@@ -14,6 +15,7 @@ class ScenarioProvider extends ChangeNotifier {
       _scenarios.clear();
       _scenarios.addAll(scenarios);
       notifyListeners();
+      dev.log('Scenarios $scenarios');
     } catch (e) {
       throw Exception(e);
     }

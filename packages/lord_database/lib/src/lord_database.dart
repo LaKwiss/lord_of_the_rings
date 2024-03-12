@@ -10,11 +10,6 @@ class LotrCardDatabase {
   late DatabaseReference _LotrCardGameRef;
   static final instance = LotrCardDatabase._();
   LotrCardDatabase._() {
-    // if (kIsWeb) {
-    //   dbLotrCardGame.useDatabaseEmulator("127.0.0.1", 9000);
-    // } else {
-    //   dbLotrCardGame.useDatabaseEmulator("10.0.2.2", 9000);
-    // }
     _LotrCardGameRef = dbLotrCardGame.ref();
   }
 

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:lord_repository/lord_repository.dart';
 import 'package:http/http.dart' as http;
+import 'dart:developer' as dev;
 
 class FirebaseCardRepository implements CardRepository {
   static const url =
@@ -46,6 +47,7 @@ class FirebaseCardRepository implements CardRepository {
       completer.completeError('Pas de connexion internet');
     } catch (e) {
       completer.completeError(e);
+      dev.log(e.toString());
     }
 
     return completer.future;
