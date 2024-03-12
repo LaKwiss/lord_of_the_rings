@@ -24,10 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
           .fetchAndSetCards();
       await Provider.of<DeckProvider>(context, listen: false)
           .fetchAndSetDecks();
-      dev.log(Provider.of<DeckProvider>(context, listen: false)
-          .decks
-          .length
-          .toString());
+      await Provider.of<ScenarioProvider>(context, listen: false)
+          .fetchAndSetScenarios();
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -36,6 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed(OverviewScenariosScreen.routeName);
+        },
+        child: const Icon(Icons.add),
+      ),
       backgroundColor: Color(0xFFD1B590),
       body: Stack(
         children: [

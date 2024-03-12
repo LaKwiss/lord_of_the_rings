@@ -5,3 +5,4 @@ export 'screens/deck_name_chooser_screen.dart';
 export 'screens/edit_screen.dart';
 export 'screens/overview_edit_screen.dart';
 export 'screens/add_screen.dart';
+export 'screens/scenarios_screen.dart';

@@ -19,6 +19,8 @@ class MyApp extends StatelessWidget {
             create: (_) => CardProvider((FirebaseCardRepository()))),
         ChangeNotifierProvider(
             create: (_) => DeckProvider(FirebaseDeckRepository())),
+        ChangeNotifierProvider(
+            create: (_) => ScenarioProvider(FirebaseScenarioRepository())),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
           OverviewEditScreen.routeName: (context) => const OverviewEditScreen(),
           EditScreen.routeName: (context) => const EditScreen(),
           AddScreen.routeName: (context) => const AddScreen(),
+          OverviewScenariosScreen.routeName: (context) =>
+              const OverviewScenariosScreen(),
           '/': (context) => const HomeScreen(),
         },
       ),

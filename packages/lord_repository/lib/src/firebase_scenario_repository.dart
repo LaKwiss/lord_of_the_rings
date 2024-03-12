@@ -7,7 +7,7 @@ import 'package:lord_repository/lord_repository.dart';
 
 class FirebaseScenarioRepository implements ScenarioRepository {
   static const url =
-      'https://lord-of-the-rings-card-game-default-rtdb.europe-west1.firebasedatabase.app/card';
+      'https://lord-of-the-rings-card-game-default-rtdb.europe-west1.firebasedatabase.app/scenario';
 
   FirebaseScenarioRepository({this.client});
 
