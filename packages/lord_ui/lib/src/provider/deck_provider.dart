@@ -10,22 +10,36 @@ class DeckProvider extends ChangeNotifier {
 
   Future<void> fetchAndSetDecks() async {
     try {
-      final List<Deck> decks = await _repository.getAllDecks();
       _decks.clear();
-      _decks.addAll(decks);
+      final datas = await _repository.getAllDecks();
+      _decks.addAll(datas);
+    } catch (e) {
+      rethrow;
+    } finally {
+      notifyListeners();
+    }
+  }
+
+  Future<void> createDeck(String name) async {
+    final toto = Deck('1', name, []);
+
+    try {
+      final deck = await _repository.createDeck(toto);
+
+      _decks.add(deck);
       notifyListeners();
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  Future<void> createDeck(String name) async {
-    final toto = Deck('1', name, [1, 1, 1, 1, 1]);
-
+  Future<void> addCardToDeck(String deckId, String cardId) async {
     try {
-      final deck = await _repository.createDeck(
-          toto); // Still create an error : Error: Exception: TypeError: null: type 'Null' is not a subtype of type 'String'
-      _decks.add(deck);
+      await _repository.addCardToDeck(deckId, cardId);
+      _decks
+          .firstWhere((element) => element.name == deckId)
+          .listCardsIds
+          .add(cardId);
       notifyListeners();
     } catch (e) {
       throw Exception(e);

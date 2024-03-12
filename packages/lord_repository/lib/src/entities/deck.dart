@@ -8,7 +8,7 @@ class Deck extends Equatable {
 
   final String id;
   final String name;
-  List<int>? listCardsIds = [];
+  List<dynamic> listCardsIds = [];
 
   @override
   List<Object?> get props => [name, listCardsIds];
@@ -29,7 +29,7 @@ class Deck extends Equatable {
     );
   }
 
-  Deck copyWith({String? id, String? name, List<int>? listCardsIds}) {
+  Deck copyWith({String? id, String? name, List<dynamic>? listCardsIds}) {
     return Deck(
       id ?? this.id,
       name ?? this.name,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:lord_component_library/component_library.dart';
-import 'package:lord_repository/lord_repository.dart';
 import 'package:lord_ui/lord_ui.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as dev;
@@ -13,8 +12,6 @@ class DeckBuilder extends StatefulWidget {
 
   static const routeName = '/deckBuilder';
 
-  final Deck myDeck = Deck('1', 'My Deck', []);
-
   @override
   State<DeckBuilder> createState() => _DeckBuilderState();
 }
@@ -24,6 +21,8 @@ class _DeckBuilderState extends State<DeckBuilder> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as String;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Deck Builder'),
@@ -41,23 +40,23 @@ class _DeckBuilderState extends State<DeckBuilder> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
-        child: CardsGrid(filterOptions: filterOptions, myDeck: widget.myDeck),
+        child: CardsGrid(filterOptions: filterOptions, args: args),
       ),
     );
   }
 }
 
 class CardsGrid extends StatelessWidget {
-  CardsGrid({required this.filterOptions, super.key, required this.myDeck});
+  CardsGrid({required this.filterOptions, super.key, required this.args});
 
   final FilterOptions filterOptions;
 
-  final Deck myDeck;
+  final String args;
 
   @override
   Widget build(BuildContext context) {
     final cardProvider = Provider.of<CardProvider>(context);
-    //final deckProvider = Provider.of<DeckProvider>(context);
+    final deckProvider = Provider.of<DeckProvider>(context);
 
     final cards = filterOptions != FilterOptions.all
         ? filterOptions == FilterOptions.hero
@@ -78,12 +77,7 @@ class CardsGrid extends StatelessWidget {
         imageUrl: cards[index].imagesrc,
         name: cards[index].name,
         onSelected: () {
-          // if (myDeck.listCardsIds.contains(index)) {
-          //   myDeck.listCardsIds.remove(index);
-          // } else {
-          //   myDeck.listCardsIds.add(index);
-          // }
-          dev.log(myDeck.toString());
+          deckProvider.addCardToDeck(args, cards[index].name!);
         },
       ),
     );

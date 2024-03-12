@@ -20,11 +20,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didChangeDependencies() async {
     if (_isInit) {
-      dev.log('fetchAndSetCards');
-
       await Provider.of<CardProvider>(context, listen: false)
           .fetchAndSetCards();
-      dev.log('fetchAndSetCards');
+      await Provider.of<DeckProvider>(context, listen: false)
+          .fetchAndSetDecks();
+      dev.log(Provider.of<DeckProvider>(context, listen: false)
+          .decks
+          .length
+          .toString());
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -34,17 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFD1B590),
-      appBar: AppBar(
-        title: const Text('Lotr Card Game'),
-      ),
       body: Stack(
         children: [
           Center(
             child: Image.asset(svg /* SVG not working ==> flutter_svg.dart*/),
           ),
           Positioned(
-            top: 220,
-            right: 800,
+            top: 285,
+            right: 785,
             child: Tooltip(
               message: 'Calculator',
               child: GestureDetector(
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Positioned(
-            bottom: 220,
+            bottom: 245,
             left: 840,
             child: Tooltip(
               message: 'Cards List',
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Positioned(
-            top: 350,
+            top: 410,
             right: 895,
             child: Tooltip(
               message: 'Create Deck',

@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 class DeckModel extends Equatable {
   final String id;
   final String name;
-  List<int>? listCardsIds = [];
+  List<dynamic> listCardsIds = [];
 
   DeckModel({required this.id, required this.name, required this.listCardsIds});
 
@@ -13,7 +13,7 @@ class DeckModel extends Equatable {
     return DeckModel(
       id: json['id'],
       name: json['name'],
-      listCardsIds: json['listCardsIds'],
+      listCardsIds: json['listCardsIds'] ?? [],
     );
   }
 

@@ -14,12 +14,6 @@ class _DeckNameChooserScreenState extends State<DeckNameChooserScreen> {
   final TextEditingController _nameController = TextEditingController();
 
   @override
-  void didChangeDependencies() async {
-    await Provider.of<DeckProvider>(context, listen: false).fetchAndSetDecks();
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final deckProvider = Provider.of<DeckProvider>(context);
 
@@ -74,12 +68,100 @@ class _DeckNameChooserScreenState extends State<DeckNameChooserScreen> {
             left: 100,
             child: ElevatedButton(
               onPressed: () {
-                deckProvider.createDeck(_nameController.text);
-                Navigator.of(context).pushNamed(DeckBuilder.routeName);
+                if (_nameController.text.isEmpty) {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: Text('Error'),
+                      content: Text('Deck name cannot be empty'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Ok'),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (_nameController.text.length > 30) {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: Text('Error'),
+                      content:
+                          Text('Deck name cannot be longer than 30 characters'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Ok'),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (_nameController.text.contains(' ')) {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: Text('Error'),
+                      content: Text('Deck name cannot contain spaces'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Ok'),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (deckProvider.decks
+                    .any((element) => element.name == _nameController.text)) {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: Text('Error'),
+                      content: Text('Deck name already exists'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Ok'),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  deckProvider.createDeck(_nameController.text);
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pushNamed(DeckBuilder.routeName,
+                      arguments: _nameController.text);
+                }
               },
               child: Text('Create Deck'),
             ),
           ),
+          Positioned(
+              top: 200,
+              right: 250,
+              child: SizedBox(
+                width: 300,
+                height: 300,
+                child: ListView.builder(
+                  itemCount: deckProvider.decks.length,
+                  itemBuilder: (ctx, index) {
+                    return Text(
+                      deckProvider.decks[index].name,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    );
+                  },
+                ),
+              ))
         ],
       ),
     );
