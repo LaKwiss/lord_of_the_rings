@@ -14,6 +14,13 @@ class FirebaseDeckRepository implements DeckRepository {
     try {
       final response = await http.post(Uri.parse('$url.json'),
           body: json.encode(DeckModel.toJson(deck.toModel())));
+      final data = json.decode(response.body);
+
+      dev.log(data.toString());
+
+      await http.patch(Uri.parse('$url/${data['name']}.json'),
+          body: json.encode({'id': data['name']}));
+
       return deck;
     } catch (e) {
       dev.log(e.toString());
@@ -33,8 +40,19 @@ class FirebaseDeckRepository implements DeckRepository {
     return decks;
   }
 
-  Future<void> addCardToDeck(String deckId, String cardId) async {
-    final response = await http.post(Uri.parse('$url/$deckId.json'),
-        body: json.encode({'listCardsIds': cardId}));
+  Future<void> addCardToDeck(String deckName, Card card) async {
+    try {
+      final List<Deck> decks = await getAllDecks();
+      dev.log('decks: $decks');
+      final String deckWhereToAddCard =
+          decks.where((element) => element.name == deckName) as String;
+
+      final response = await http
+          .post(Uri.parse('$url/$deckWhereToAddCard.json'), body: card.name);
+
+      dev.log('done');
+    } catch (e) {
+      dev.log(e.toString());
+    }
   }
 }

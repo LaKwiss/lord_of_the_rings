@@ -1,5 +1,5 @@
 import 'package:lord_repository/lord_repository.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Card;
 
 class DeckProvider extends ChangeNotifier {
   DeckProvider(this._repository);
@@ -21,8 +21,7 @@ class DeckProvider extends ChangeNotifier {
   }
 
   Future<void> createDeck(String name) async {
-    final toto = Deck('1', name, []);
-
+    final toto = Deck('', name, []);
     try {
       final deck = await _repository.createDeck(toto);
 
@@ -33,16 +32,7 @@ class DeckProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> addCardToDeck(String deckId, String cardId) async {
-    try {
-      await _repository.addCardToDeck(deckId, cardId);
-      _decks
-          .firstWhere((element) => element.name == deckId)
-          .listCardsIds
-          .add(cardId);
-      notifyListeners();
-    } catch (e) {
-      throw Exception(e);
-    }
+  Future<void> addCardToDeck(String deckName, Card card) async {
+    _repository.addCardToDeck(deckName, card);
   }
 }

@@ -40,18 +40,18 @@ class _DeckBuilderState extends State<DeckBuilder> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
-        child: CardsGrid(filterOptions: filterOptions, args: args),
+        child: CardsGrid(filterOptions: filterOptions, deckName: args),
       ),
     );
   }
 }
 
 class CardsGrid extends StatelessWidget {
-  CardsGrid({required this.filterOptions, super.key, required this.args});
+  CardsGrid({required this.filterOptions, super.key, required this.deckName});
 
   final FilterOptions filterOptions;
 
-  final String args;
+  final String deckName;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ class CardsGrid extends StatelessWidget {
         imageUrl: cards[index].imagesrc,
         name: cards[index].name,
         onSelected: () {
-          deckProvider.addCardToDeck(args, cards[index].name!);
+          deckProvider.addCardToDeck(deckName, cards[index]);
         },
       ),
     );

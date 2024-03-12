@@ -6,7 +6,7 @@ import 'package:equatable/equatable.dart';
 class Deck extends Equatable {
   Deck(this.id, this.name, this.listCardsIds);
 
-  final String id;
+  String id;
   final String name;
   List<dynamic> listCardsIds = [];
 
