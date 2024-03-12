@@ -31,6 +31,20 @@ class ScenarioModel extends Equatable {
     };
   }
 
+  ScenarioModel copyWith({
+    String? id,
+    String? name,
+    String? description,
+    String? imageSrc,
+  }) {
+    return ScenarioModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      imageSrc: imageSrc ?? this.imageSrc,
+    );
+  }
+
   @override
   List<Object> get props => [id, name, description, imageSrc];
 }

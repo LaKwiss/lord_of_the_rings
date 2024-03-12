@@ -18,4 +18,43 @@ class ScenarioProvider extends ChangeNotifier {
       throw Exception(e);
     }
   }
+
+  Scenario findById(String id) {
+    return _scenarios.firstWhere((element) => element.id == id);
+  }
+
+  Future<void> updateScenario(Scenario scenario) async {
+    try {
+      final index =
+          _scenarios.indexWhere((element) => element.id == scenario.id);
+      final data = await _repository.updateScenario(scenario);
+      _scenarios[index] = data;
+    } catch (e) {
+      throw Exception(e);
+    } finally {
+      notifyListeners();
+    }
+  }
+
+  Future<void> deleteScenario(Scenario scenario) async {
+    try {
+      await _repository.deleteScenario(scenario);
+      _scenarios.removeWhere((element) => element.id == scenario.id);
+    } catch (e) {
+      throw Exception(e);
+    } finally {
+      notifyListeners();
+    }
+  }
+
+  Future<void> addScenario(Scenario scenario) async {
+    try {
+      final data = await _repository.addScenario(scenario);
+      _scenarios.add(data);
+    } catch (e) {
+      throw Exception(e);
+    } finally {
+      notifyListeners();
+    }
+  }
 }

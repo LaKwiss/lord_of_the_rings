@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 class FirebaseCardRepository implements CardRepository {
   static const url =
       'https://lord-of-the-rings-card-game-default-rtdb.europe-west1.firebasedatabase.app/card';
-  //static const dbName = '?ns=card-7d2cb';
   FirebaseCardRepository({this.client});
 
   final http.Client? client;
