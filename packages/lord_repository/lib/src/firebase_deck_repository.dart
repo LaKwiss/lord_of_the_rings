@@ -27,14 +27,19 @@ class FirebaseDeckRepository implements DeckRepository {
 
   @override
   Future<List<Deck>> getAllDecks() async {
-    final response = await http.get(Uri.parse('$url.json'));
-    final Map<String, dynamic> data = json.decode(response.body);
-    final List<Deck> decks = [];
-    data.forEach((key, value) {
-      final deck = DeckModel.fromJson(value);
-      decks.add(Deck(deck.id, deck.name, deck.listCardsIds));
-    });
-    return decks;
+    try {
+      final response = await http.get(Uri.parse('$url.json'));
+      final Map<String, dynamic> data = json.decode(response.body);
+      final List<Deck> decks = [];
+      data.forEach((key, value) {
+        final deck = DeckModel.fromJson(value);
+        decks.add(Deck(deck.id, deck.name, deck.listCardsIds));
+      });
+      return decks;
+    } catch (e) {
+      dev.log('Deck are empty');
+      return [];
+    }
   }
 
   Future<void> addCardToDeck(Deck deck) async {

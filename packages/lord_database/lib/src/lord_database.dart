@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 class LotrCardDatabase {
   final FirebaseDatabase dbLotrCardGame = FirebaseDatabase.instance;
   static const cardsNode = 'card';
+  static const scenariosNode = 'scenario';
   late DatabaseReference _LotrCardGameRef;
   static final instance = LotrCardDatabase._();
   LotrCardDatabase._() {
@@ -24,8 +25,15 @@ class LotrCardDatabase {
         final idCard = _LotrCardGameRef.child(cardsNode).push().key;
         updates['$cardsNode/$idCard'] = v;
       });
-      return _LotrCardGameRef.update(updates);
     }
+    if (json[scenariosNode] != null) {
+      _LotrCardGameRef.child(scenariosNode).remove();
+      json[scenariosNode].forEach((v) {
+        final idScenario = _LotrCardGameRef.child(scenariosNode).push().key;
+        updates['$scenariosNode/$idScenario'] = v;
+      });
+    }
+    return _LotrCardGameRef.update(updates);
   }
 
   Future<void> dumpDatabase() async {

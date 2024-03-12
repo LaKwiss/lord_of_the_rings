@@ -2,7 +2,6 @@ import 'package:lord_component_library/component_library.dart';
 import 'package:lord_ui/lord_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'dart:developer' as dev;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
