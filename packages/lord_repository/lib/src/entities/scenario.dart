@@ -1,22 +1,51 @@
 import 'package:equatable/equatable.dart';
-import '../models/scenario_model.dart';
+import 'package:lord_repository/lord_repository.dart';
 
 class Scenario extends Equatable {
-  const Scenario(
-    this.name,
-    this.difficulty,
-  );
+  final String id;
+  final String name;
+  final String description;
+  final String imageSrc;
 
-  factory Scenario.fromModel(ScenarioModel model) {
+  const Scenario({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.imageSrc,
+  });
+
+  Scenario copyWith({
+    String? id,
+    String? name,
+    String? description,
+    String? imageSrc,
+  }) {
     return Scenario(
-      model.name,
-      model.difficulty,
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      imageSrc: imageSrc ?? this.imageSrc,
     );
   }
 
-  final String name;
-  final int difficulty;
+  ScenarioModel toModel() {
+    return ScenarioModel(
+      id: id,
+      name: name,
+      description: description,
+      imageSrc: imageSrc,
+    );
+  }
+
+  factory Scenario.fromModel(ScenarioModel model) {
+    return Scenario(
+      id: model.id,
+      name: model.name,
+      description: model.description,
+      imageSrc: model.imageSrc,
+    );
+  }
 
   @override
-  List<Object> get props => [name, difficulty];
+  List<Object> get props => [id, name, description, imageSrc];
 }

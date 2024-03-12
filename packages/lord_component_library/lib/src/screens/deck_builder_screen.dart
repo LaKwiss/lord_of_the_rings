@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:lord_component_library/component_library.dart';
+import 'package:lord_repository/lord_repository.dart';
 import 'package:lord_ui/lord_ui.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as dev;

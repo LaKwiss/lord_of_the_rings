@@ -22,10 +22,10 @@ class _OverviewEditScreenState extends State<OverviewEditScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(         
-                context,                   
-                AddScreen.routeName,    
-              );                           
+              Navigator.pushNamed(
+                context,
+                AddScreen.routeName,
+              );
             },
             icon: const Icon(Icons.add),
           ),
@@ -49,27 +49,24 @@ class _OverviewEditScreenState extends State<OverviewEditScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconTheme(
-                    data: IconThemeData(
-                        color: Colors.white), // Set the icon color to white
+                    data: IconThemeData(color: Colors.white),
                     child: IconButton(
                       icon: Icon(Icons.edit),
-                      color: Colors.green, // Set the default color to gray
+                      color: Colors.green,
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
                           EditScreen.routeName,
-                          arguments:
-                              card, // Pass the card object as an argument
+                          arguments: card,
                         );
                       },
                     ),
                   ),
                   IconTheme(
-                    data: IconThemeData(
-                        color: Colors.white), // Set the icon color to white
+                    data: IconThemeData(color: Colors.white),
                     child: IconButton(
                       icon: Icon(Icons.delete),
-                      color: Colors.red, // Set the default color to gray
+                      color: Colors.red,
                       onPressed: () {
                         showDialog(
                           context: context,
@@ -87,7 +84,6 @@ class _OverviewEditScreenState extends State<OverviewEditScreen> {
                                 ),
                                 TextButton(
                                   onPressed: () {
-                                    // Delete the card
                                     cardProvider.deleteCard(card);
                                     Navigator.of(context).pop();
                                   },

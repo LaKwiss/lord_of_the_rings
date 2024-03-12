@@ -17,12 +17,12 @@ class DeckModel extends Equatable {
     );
   }
 
-  factory DeckModel.toJson(DeckModel deck) {
-    return DeckModel(
-      id: deck.id,
-      name: deck.name,
-      listCardsIds: deck.listCardsIds,
-    );
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "name": name,
+      "listCardsIds": listCardsIds,
+    };
   }
 
   DeckModel copyWith({String? id, String? name, List<int>? listCardsIds}) {
@@ -31,14 +31,6 @@ class DeckModel extends Equatable {
       name: name ?? this.name,
       listCardsIds: listCardsIds ?? this.listCardsIds,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'listCardsIds': listCardsIds,
-    };
   }
 
   @override

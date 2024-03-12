@@ -7,7 +7,7 @@ class Deck extends Equatable {
   Deck(this.id, this.name, this.listCardsIds);
 
   String id;
-  final String name;
+  String name;
   List<dynamic> listCardsIds = [];
 
   @override

@@ -1,21 +1,36 @@
 import 'package:equatable/equatable.dart';
 
 class ScenarioModel extends Equatable {
-  const ScenarioModel(
-    this.name,
-    this.difficulty,
-  );
+  final String id;
+  final String name;
+  final String description;
+  final String imageSrc;
 
-  factory ScenarioModel.fromJson(Map<String, dynamic> map) {
+  const ScenarioModel({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.imageSrc,
+  });
+
+  factory ScenarioModel.fromJson(Map<String, dynamic> json) {
     return ScenarioModel(
-      map['name'] as String,
-      map['difficulty'] as int,
+      id: json['id'],
+      name: json['name'],
+      description: json['description'],
+      imageSrc: json['imageSrc'],
     );
   }
 
-  final String name;
-  final int difficulty;
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'imageSrc': imageSrc,
+    };
+  }
 
   @override
-  List<Object> get props => [name, difficulty];
+  List<Object> get props => [id, name, description, imageSrc];
 }

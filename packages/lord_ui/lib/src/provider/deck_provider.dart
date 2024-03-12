@@ -32,7 +32,14 @@ class DeckProvider extends ChangeNotifier {
     }
   }
 
+  Deck findByName(String name) {
+    return _decks.firstWhere((element) => element.name == name);
+  }
+
   Future<void> addCardToDeck(String deckName, Card card) async {
-    _repository.addCardToDeck(deckName, card);
+    final deck = findByName(deckName);
+
+    deck.listCardsIds.add(card.name!);
+    _repository.addCardToDeck(deck);
   }
 }
