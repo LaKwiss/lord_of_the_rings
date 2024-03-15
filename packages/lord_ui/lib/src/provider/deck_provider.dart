@@ -51,4 +51,25 @@ class DeckProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> removeCardFromDeck(int index, Deck deck) async {
+    try {
+      _repository.removeCardFromDeck(deck, index);
+    } catch (e) {
+      throw Exception(e);
+    } finally {
+      notifyListeners();
+    }
+  }
+
+  Future<void> deleteDeck(Deck deck) async {
+    try {
+      await _repository.deleteDeck(deck);
+      _decks.removeWhere((element) => element.id == deck.id);
+    } catch (e) {
+      throw Exception(e);
+    } finally {
+      notifyListeners();
+    }
+  }
 }

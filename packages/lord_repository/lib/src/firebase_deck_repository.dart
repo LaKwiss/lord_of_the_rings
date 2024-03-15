@@ -37,7 +37,7 @@ class FirebaseDeckRepository implements DeckRepository {
       });
       return decks;
     } catch (e) {
-      dev.log('Deck are empty');
+      dev.log('Deck is empty');
       return [];
     }
   }
@@ -46,6 +46,23 @@ class FirebaseDeckRepository implements DeckRepository {
     try {
       await http.patch(Uri.parse('$url/${deck.id}.json'),
           body: json.encode(deck.toModel().toJson()));
+    } catch (e) {
+      dev.log(e.toString());
+    }
+  }
+
+  Future<void> removeCardFromDeck(Deck deck, int index) async {
+    try {
+      await http.delete(Uri.parse(
+          '$url/${deck.id}/listCardsIds/${deck.listCardsIds[index]}.json'));
+    } catch (e) {
+      dev.log(e.toString());
+    }
+  }
+
+  Future<void> deleteDeck(Deck deck) async {
+    try {
+      await http.delete(Uri.parse('$url/${deck.id}.json'));
     } catch (e) {
       dev.log(e.toString());
     }

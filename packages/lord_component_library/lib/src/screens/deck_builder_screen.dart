@@ -77,7 +77,21 @@ class CardsGrid extends StatelessWidget {
         imageUrl: cards[index].imagesrc,
         name: cards[index].name,
         onSelected: () {
+
+          if (deckProvider.decks
+              .firstWhere((element) => element.name == deckName).listCardsIds.length >= 53) {}
+
           deckProvider.addCardToDeck(deckName, cards[index]);
+          try {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('${cards[index].name} added to $deckName'),
+                duration: const Duration(seconds: ),
+              ),
+            );
+          } catch (e) {
+            dev.log(e.toString());
+          }
         },
       ),
     );

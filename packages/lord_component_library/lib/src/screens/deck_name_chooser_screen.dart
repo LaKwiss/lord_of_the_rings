@@ -153,10 +153,58 @@ class _DeckNameChooserScreenState extends State<DeckNameChooserScreen> {
                 child: ListView.builder(
                   itemCount: deckProvider.decks.length,
                   itemBuilder: (ctx, index) {
-                    return Text(
-                      deckProvider.decks[index].name,
-                      style: TextStyle(
-                        color: Colors.white,
+                    return ListTile(
+                      title: Text(
+                        deckProvider.decks[index].name,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              throw UnimplementedError();
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              color: Colors.lightGreen,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: Text('Delete Deck'),
+                                        content: Text(
+                                            'Are you sure you want to delete this deck?'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              deckProvider.deleteDeck(
+                                                  deckProvider.decks[index]);
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('Yes'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('No'),
+                                          ),
+                                        ],
+                                      ));
+                            },
+                            icon: Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },

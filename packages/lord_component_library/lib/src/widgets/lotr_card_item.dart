@@ -39,34 +39,20 @@ class _LotrCardItemState extends State<LotrCardItem> {
               borderRadius: BorderRadius.circular(18),
               child: Image.network(widget.imageUrl)),
           Container(
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.topRight,
-            child: widget.isSelectionned
-                ? GestureDetector(
-                    onTap: () => setState(() {
-                      widget.isSelectionned = !widget.isSelectionned;
-                    }),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.lightBlue,
-                      child: Icon(
-                        Icons.check,
-                        color: Colors.white,
-                      ),
-                    ),
-                  )
-                : GestureDetector(
-                    onTap: () => setState(() {
-                      widget.isSelectionned = !widget.isSelectionned;
-                    }),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.lightBlue.withOpacity(0.5),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.topRight,
+              child: GestureDetector(
+                onTap: () => setState(() {
+                  widget.isSelectionned = !widget.isSelectionned;
+                }),
+                child: CircleAvatar(
+                  backgroundColor: Colors.lightBlue,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
                   ),
-          ),
+                ),
+              )),
         ]),
       ),
     );

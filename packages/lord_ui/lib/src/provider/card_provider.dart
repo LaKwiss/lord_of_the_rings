@@ -20,9 +20,10 @@ class CardProvider extends ChangeNotifier {
       final List<Card> cards = await _repository.getAllCards();
       _cards.clear();
       _cards.addAll(cards);
-      notifyListeners();
     } catch (e) {
       throw Exception(e);
+    } finally {
+      notifyListeners();
     }
   }
 
@@ -35,9 +36,10 @@ class CardProvider extends ChangeNotifier {
       final index = _cards.indexWhere((element) => element.id == card.id);
       final data = await _repository.updateCard(card);
       _cards[index] = data;
-      notifyListeners();
     } catch (e) {
       throw Exception(e);
+    } finally {
+      notifyListeners();
     }
   }
 
@@ -45,9 +47,10 @@ class CardProvider extends ChangeNotifier {
     try {
       await _repository.deleteCard(card);
       _cards.removeWhere((element) => element.id == card.id);
-      notifyListeners();
     } catch (e) {
       throw Exception(e);
+    } finally {
+      notifyListeners();
     }
   }
 
@@ -55,9 +58,10 @@ class CardProvider extends ChangeNotifier {
     try {
       final data = await _repository.addCard(card);
       _cards.add(data);
-      notifyListeners();
     } catch (e) {
       throw Exception(e);
+    } finally {
+      notifyListeners();
     }
   }
 }
