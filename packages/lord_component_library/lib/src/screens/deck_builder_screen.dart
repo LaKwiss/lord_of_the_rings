@@ -84,54 +84,57 @@ class CardsGrid extends StatelessWidget {
 
     dev.log('Cards length: ${cards.length}', name: 'CardsGrid');
 
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 7,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-          childAspectRatio: 5 / 7),
-      itemCount: cards.length,
-      itemBuilder: (context, index) => LotrCardItem(
-        imageUrl: cards[index].imagesrc,
-        name: cards[index].name,
-        onSelected: () {
-          if (deckProvider.decks
-                  .firstWhere((element) => element.name == deckName)
-                  .listCardsIds
-                  .length >=
-              53) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text('Deck is full'),
-                duration: const Duration(seconds: 1)));
-          } else if (cards[index].type_code == 'hero' && heroCount >= 3) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text('Only three hero allowed'),
-                duration: const Duration(seconds: 1)));
-          } else if (heroList.contains(cards[index].id)) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text('Hero already in deck'),
-                duration: const Duration(seconds: 1)));
-          } else if (cards[index].type_code == 'hero') {
-            deckProvider.addCardToDeck(deckName, cards[index]);
-            heroCount++;
-            heroList.add(cards[index].id!);
-            snackBar(context, cards, index);
-          } else {
+    return Scrollbar(
+      thumbVisibility: true,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 7,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            childAspectRatio: 5 / 7),
+        itemCount: cards.length,
+        itemBuilder: (context, index) => LotrCardItem(
+          imageUrl: cards[index].imagesrc,
+          name: cards[index].name,
+          onSelected: () {
             if (deckProvider.decks
                     .firstWhere((element) => element.name == deckName)
                     .listCardsIds
-                    .where((element) => element == cards[index].name)
                     .length >=
-                cards[index].deck_limit!) {
+                53) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('Card limit reached'),
+                  content: Text('Deck is full'),
                   duration: const Duration(seconds: 1)));
-            } else {
+            } else if (cards[index].type_code == 'hero' && heroCount >= 3) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('Only three hero allowed'),
+                  duration: const Duration(seconds: 1)));
+            } else if (heroList.contains(cards[index].id)) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('Hero already in deck'),
+                  duration: const Duration(seconds: 1)));
+            } else if (cards[index].type_code == 'hero') {
               deckProvider.addCardToDeck(deckName, cards[index]);
+              heroCount++;
+              heroList.add(cards[index].id!);
               snackBar(context, cards, index);
+            } else {
+              if (deckProvider.decks
+                      .firstWhere((element) => element.name == deckName)
+                      .listCardsIds
+                      .where((element) => element == cards[index].name)
+                      .length >=
+                  cards[index].deck_limit!) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Card limit reached'),
+                    duration: const Duration(seconds: 1)));
+              } else {
+                deckProvider.addCardToDeck(deckName, cards[index]);
+                snackBar(context, cards, index);
+              }
             }
-          }
-        },
+          },
+        ),
       ),
     );
   }
