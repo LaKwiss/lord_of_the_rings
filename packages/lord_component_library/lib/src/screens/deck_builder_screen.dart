@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:lord_component_library/component_library.dart';
+import 'package:lord_repository/lord_repository.dart';
 import 'package:lord_ui/lord_ui.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as dev;
@@ -46,12 +47,29 @@ class _DeckBuilderState extends State<DeckBuilder> {
   }
 }
 
+// ignore: must_be_immutable
 class CardsGrid extends StatelessWidget {
   CardsGrid({required this.filterOptions, super.key, required this.deckName});
 
   final FilterOptions filterOptions;
 
   final String deckName;
+
+  int heroCount = 0;
+  List<String> heroList = [];
+
+  void snackBar(BuildContext context, List<Card> cards, int index) {
+    try {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${cards[index].name} added to $deckName'),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    } catch (e) {
+      dev.log(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,24 +102,34 @@ class CardsGrid extends StatelessWidget {
               53) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text('Deck is full'),
-                duration: const Duration(seconds: 2)));
-          } else if (cards[index].type_code == 'hero' &&
-              deckProvider.decks
-                  .firstWhere((element) => element.name == deckName)
-                  .listCardsIds
-                  .any((element) => element.type_code == 'hero')) {
-          } else {
+                duration: const Duration(seconds: 1)));
+          } else if (cards[index].type_code == 'hero' && heroCount >= 3) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Only three hero allowed'),
+                duration: const Duration(seconds: 1)));
+          } else if (heroList.contains(cards[index].id)) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Hero already in deck'),
+                duration: const Duration(seconds: 1)));
+          } else if (cards[index].type_code == 'hero') {
             deckProvider.addCardToDeck(deckName, cards[index]);
-          }
-          try {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('${cards[index].name} added to $deckName'),
-                duration: const Duration(seconds: 2),
-              ),
-            );
-          } catch (e) {
-            dev.log(e.toString());
+            heroCount++;
+            heroList.add(cards[index].id!);
+            snackBar(context, cards, index);
+          } else {
+            if (deckProvider.decks
+                    .firstWhere((element) => element.name == deckName)
+                    .listCardsIds
+                    .where((element) => element == cards[index].name)
+                    .length >=
+                cards[index].deck_limit!) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('Card limit reached'),
+                  duration: const Duration(seconds: 1)));
+            } else {
+              deckProvider.addCardToDeck(deckName, cards[index]);
+              snackBar(context, cards, index);
+            }
           }
         },
       ),
