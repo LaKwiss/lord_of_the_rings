@@ -154,10 +154,15 @@ class _DeckNameChooserScreenState extends State<DeckNameChooserScreen> {
                   itemCount: deckProvider.decks.length,
                   itemBuilder: (ctx, index) {
                     return ListTile(
-                      title: Text(
-                        deckProvider.decks[index].name,
-                        style: TextStyle(
-                          color: Colors.white,
+                      title: GestureDetector(
+                        onTap: () => Navigator.of(context).pushNamed(
+                            DeckOverview.routeName,
+                            arguments: deckProvider.decks[index].name),
+                        child: Text(
+                          deckProvider.decks[index].name,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       trailing: Row(
@@ -165,7 +170,9 @@ class _DeckNameChooserScreenState extends State<DeckNameChooserScreen> {
                         children: [
                           IconButton(
                             onPressed: () {
-                              throw UnimplementedError();
+                              Navigator.of(context).pushNamed(
+                                  DeckBuilder.routeName,
+                                  arguments: deckProvider.decks[index].name);
                             },
                             icon: Icon(
                               Icons.edit,
