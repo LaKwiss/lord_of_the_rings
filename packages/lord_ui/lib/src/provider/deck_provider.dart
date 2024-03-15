@@ -21,25 +21,34 @@ class DeckProvider extends ChangeNotifier {
   }
 
   Future<void> createDeck(String name) async {
-    final toto = Deck('', name, []);
     try {
-      final deck = await _repository.createDeck(toto);
-
+      final deck = await _repository.createDeck(Deck.fromName(name));
       _decks.add(deck);
+    } catch (e) {
+      throw Exception(e);
+    } finally {
       notifyListeners();
+    }
+  }
+
+  Deck findByName(String name) {
+    try {
+      return _decks.firstWhere((element) => element.name == name);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  Deck findByName(String name) {
-    return _decks.firstWhere((element) => element.name == name);
-  }
-
   Future<void> addCardToDeck(String deckName, Card card) async {
-    final deck = findByName(deckName);
+    try {
+      final deck = findByName(deckName);
 
-    deck.listCardsIds.add(card.name!);
-    _repository.addCardToDeck(deck);
+      deck.listCardsIds.add(card.name!);
+      _repository.addCardToDeck(deck);
+    } catch (e) {
+      throw Exception(e);
+    } finally {
+      notifyListeners();
+    }
   }
 }
