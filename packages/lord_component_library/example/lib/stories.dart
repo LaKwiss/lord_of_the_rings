@@ -15,7 +15,7 @@ List<Story> getStories() {
             addFunction: () => dev.log('a'),
             removeFunction: () => dev.log('b'),
             counter: counter)),
-    Story(name: 'Calc Screen', builder: (context) => Calculator()),
+    //Story(name: 'Calc Screen', builder: (context) => Calculator()),
     Story(name: 'Create Deck', builder: (context) => const CreateDeck()),
   ];
 }
