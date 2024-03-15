@@ -156,7 +156,7 @@ class _DeckNameChooserScreenState extends State<DeckNameChooserScreen> {
                     return ListTile(
                       title: GestureDetector(
                         onTap: () => Navigator.of(context).pushNamed(
-                            DeckOverview.routeName,
+                            DeckOverviewScreen.routeName,
                             arguments: deckProvider.decks[index].name),
                         child: Text(
                           deckProvider.decks[index].name,

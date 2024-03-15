@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class DeckOverviewScreen extends StatefulWidget {
   const DeckOverviewScreen({super.key});
 
+  static const routeName = '/deckOverviewScreen';
+
   @override
   State<DeckOverviewScreen> createState() => _DeckOverviewScreenState();
 }

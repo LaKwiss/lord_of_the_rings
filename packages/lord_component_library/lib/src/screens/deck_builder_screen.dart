@@ -85,6 +85,11 @@ class CardsGrid extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text('Deck is full'),
                 duration: const Duration(seconds: 2)));
+          } else if (cards[index].type_code == 'hero' &&
+              deckProvider.decks
+                  .firstWhere((element) => element.name == deckName)
+                  .listCardsIds
+                  .any((element) => element.type_code == 'hero')) {
           } else {
             deckProvider.addCardToDeck(deckName, cards[index]);
           }

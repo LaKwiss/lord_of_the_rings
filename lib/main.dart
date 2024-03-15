@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
           OverviewScenariosScreen.routeName: (context) =>
               const OverviewScenariosScreen(),
           '/': (context) => const HomeScreen(),
+          DeckOverviewScreen.routeName: (context) => const DeckOverviewScreen(),
         },
       ),
     );
