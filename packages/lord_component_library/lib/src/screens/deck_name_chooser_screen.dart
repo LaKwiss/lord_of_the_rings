@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lord_component_library/component_library.dart';
 import 'package:provider/provider.dart';
-import 'package:lord_ui/lord_ui.dart';
+import 'package:lord_bloc/lord_bloc.dart';
 
 class DeckNameChooserScreen extends StatefulWidget {
   static const routeName = '/deckNameChooserScreen';

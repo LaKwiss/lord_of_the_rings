@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lord_component_library/component_library.dart';
 import 'package:lord_repository/lord_repository.dart';
-import 'package:lord_ui/lord_ui.dart';
+import 'package:lord_bloc/lord_bloc.dart';
 import 'package:provider/provider.dart';
 
 void main() {

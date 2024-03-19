@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lord_repository/lord_repository.dart';
-import 'package:lord_ui/lord_ui.dart';
+import 'package:lord_bloc/lord_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 import 'stories.dart';

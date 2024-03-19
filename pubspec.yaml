@@ -11,8 +11,8 @@ dependencies:
     
   cupertino_icons: ^1.0.2
   provider: ^6.1.2
-  lord_ui: 
-    path: packages/lord_ui
+  lord_bloc: 
+    path: packages/lord_bloc
   lord_repository: 
     path: packages/lord_repository
   lord_component_library:

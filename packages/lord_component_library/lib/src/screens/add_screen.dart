@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:lord_repository/lord_repository.dart';
-import 'package:lord_ui/lord_ui.dart';
+import 'package:lord_bloc/lord_bloc.dart';
 import 'package:provider/provider.dart';
 
 class AddScreen extends StatefulWidget {
@@ -13,7 +13,6 @@ class AddScreen extends StatefulWidget {
 }
 
 class _AddScreenState extends State<AddScreen> {
-  
   TextEditingController _nameController = TextEditingController();
   TextEditingController _idController = TextEditingController();
   TextEditingController _costController = TextEditingController();
@@ -66,7 +65,6 @@ class _AddScreenState extends State<AddScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Screen'),
@@ -208,9 +206,9 @@ class _AddScreenState extends State<AddScreen> {
               },
             ),
             ElevatedButton(
-                    onPressed: _saveAndAdd,
-                    child: Text('Save'),
-                  )
+              onPressed: _saveAndAdd,
+              child: Text('Save'),
+            )
           ],
         ),
       ),
