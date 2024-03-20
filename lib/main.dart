@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lord_component_library/component_library.dart';
-import 'package:lord_repository/lord_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lord_bloc/lord_bloc.dart';
-import 'package:provider/provider.dart';
+import 'package:lord_component_library/component_library.dart';
+//import 'package:lord_repository/lord_repository.dart';
+//import 'package:lord_bloc/lord_bloc.dart';
+//import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,30 +15,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-            create: (_) => CardProvider((FirebaseCardRepository()))),
-        ChangeNotifierProvider(
-            create: (_) => DeckProvider(FirebaseDeckRepository())),
-        ChangeNotifierProvider(
-            create: (_) => ScenarioProvider(FirebaseScenarioRepository())),
-      ],
-      child: MaterialApp(
+    // return MultiProvider(
+    //   providers: [
+    //     ChangeNotifierProvider(
+    //         create: (_) => CardProvider((FirebaseCardRepository()))),
+    //     ChangeNotifierProvider(
+    //         create: (_) => DeckProvider(FirebaseDeckRepository())),
+    //     ChangeNotifierProvider(
+    //         create: (_) => ScenarioProvider(FirebaseScenarioRepository())),
+    //   ],
+    //   child: MaterialApp(
+    //     debugShowCheckedModeBanner: false,
+    //     routes: {
+    //       DeckBuilder.routeName: (context) => DeckBuilder(),
+    //       Calculator.routeName: (context) => Calculator(),
+    //       DeckNameChooserScreen.routeName: (context) => DeckNameChooserScreen(),
+    //       OverviewEditScreen.routeName: (context) => const OverviewEditScreen(),
+    //       EditScreen.routeName: (context) => const EditScreen(),
+    //       AddScreen.routeName: (context) => const AddScreen(),
+    //       OverviewScenariosScreen.routeName: (context) =>
+    //           const OverviewScenariosScreen(),
+    //       '/': (context) => const HomeScreen(),
+    //       DeckOverviewScreen.routeName: (context) => const DeckOverviewScreen(),
+    //     },
+    //   ),
+    // );
+
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
-        routes: {
-          DeckBuilder.routeName: (context) => DeckBuilder(),
-          Calculator.routeName: (context) => Calculator(),
-          DeckNameChooserScreen.routeName: (context) => DeckNameChooserScreen(),
-          OverviewEditScreen.routeName: (context) => const OverviewEditScreen(),
-          EditScreen.routeName: (context) => const EditScreen(),
-          AddScreen.routeName: (context) => const AddScreen(),
-          OverviewScenariosScreen.routeName: (context) =>
-              const OverviewScenariosScreen(),
-          '/': (context) => const HomeScreen(),
-          DeckOverviewScreen.routeName: (context) => const DeckOverviewScreen(),
-        },
-      ),
-    );
+        home: BlocProvider(
+          create: (context) => CardsBloc()..add(FetchAndSetCards()),
+          child: TestBlocCardScreen(),
+        ));
   }
 }

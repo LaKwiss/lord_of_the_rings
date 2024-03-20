@@ -7,3 +7,4 @@ export 'screens/overview_edit_screen.dart';
 export 'screens/add_screen.dart';
 export 'screens/scenarios_screen.dart';
 export 'screens/deck_overview_screen.dart';
+export 'screens/test_bloc_card_screen.dart';
