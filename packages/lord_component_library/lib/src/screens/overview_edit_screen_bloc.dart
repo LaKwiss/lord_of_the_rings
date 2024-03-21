@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lord_bloc/lord_bloc.dart';
@@ -64,13 +66,15 @@ class OverviewEditScreenBloc extends StatelessWidget {
                                       },
                                       child: Text('Cancel'),
                                     ),
-                                    // TextButton(
-                                    //   onPressed: () {
-                                    //     cardProvider.deleteCard(card);
-                                    //     Navigator.of(context).pop();
-                                    //   },
-                                    //   child: Text('Delete'),
-                                    // ),
+                                    TextButton(
+                                      onPressed: () {
+                                        context
+                                            .read<CardsBloc>()
+                                            .add(DeleteCard(card));
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Delete'),
+                                    ),
                                   ],
                                 );
                               },

@@ -10,6 +10,7 @@ class CardsBloc extends Bloc<CardsEvent, CardsState> {
   CardsBloc({required this.cardRepository})
       : super(const CardsState(status: CardsStatus.initial)) {
     on<FetchAndSetCards>(_onFetchAndSetCards);
+    on<DeleteCard>(_onDeleteCards);
   }
 
   final CardRepository cardRepository;
@@ -17,6 +18,17 @@ class CardsBloc extends Bloc<CardsEvent, CardsState> {
   Future<void> _onFetchAndSetCards(
       FetchAndSetCards event, Emitter<CardsState> emit) async {
     try {
+      final cards = await cardRepository.getAllCards();
+      emit(state.copyWith(status: CardsStatus.success, cards: cards));
+    } catch (_) {
+      emit(state.copyWith(status: CardsStatus.failure));
+    }
+  }
+
+  Future<void> _onDeleteCards(
+      DeleteCard event, Emitter<CardsState> emit) async {
+    try {
+      await cardRepository.deleteCard(event.card);
       final cards = await cardRepository.getAllCards();
       emit(state.copyWith(status: CardsStatus.success, cards: cards));
     } catch (_) {
