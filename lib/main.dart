@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lord_bloc/lord_bloc.dart';
 import 'package:lord_component_library/component_library.dart';
+import 'package:lord_repository/lord_repository.dart';
 //import 'package:lord_repository/lord_repository.dart';
 //import 'package:lord_bloc/lord_bloc.dart';
 //import 'package:provider/provider.dart';
@@ -40,11 +41,12 @@ class MyApp extends StatelessWidget {
     //     },
     //   ),
     // );
-
+    final rtdbCardRepository = FirebaseCardRepository();
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: BlocProvider(
-          create: (context) => CardsBloc()..add(FetchAndSetCards()),
+          create: (context) => CardsBloc(cardRepository: rtdbCardRepository)
+            ..add(FetchAndSetCards()),
           child: TestBlocCardScreen(),
         ));
   }

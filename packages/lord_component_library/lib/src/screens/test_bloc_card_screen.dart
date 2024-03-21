@@ -16,7 +16,7 @@ class TestBlocCardScreen extends StatelessWidget {
       body: Center(
         child: BlocBuilder<CardsBloc, CardsState>(
           builder: (context, state) {
-            return Text(state.toString() ?? 'No state found...');
+            return Text(state.cards.length.toString());
           },
         ),
       ),

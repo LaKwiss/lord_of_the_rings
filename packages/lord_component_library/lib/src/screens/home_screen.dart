@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lord_component_library/component_library.dart';
 import 'package:lord_bloc/lord_bloc.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           .fetchAndSetDecks();
       await Provider.of<ScenarioProvider>(context, listen: false)
           .fetchAndSetScenarios();
+      BlocProvider.of<CardsBloc>(context).add(FetchAndSetCards());
     }
     _isInit = false;
     super.didChangeDependencies();
