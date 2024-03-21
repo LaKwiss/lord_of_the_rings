@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         home: BlocProvider(
           create: (context) => CardsBloc(cardRepository: rtdbCardRepository)
             ..add(FetchAndSetCards()),
-          child: TestBlocCardScreen(),
+          child: const OverviewEditScreenBloc(),
         ));
   }
 }
