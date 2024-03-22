@@ -1,16 +1,14 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart' hide Card;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lord_repository/lord_repository.dart';
 import 'package:lord_bloc/lord_bloc.dart';
-import 'package:provider/provider.dart';
 
 class EditScreen extends StatefulWidget {
   static const routeName = '/edit';
 
-  EditScreen({required this.id});
-
-  final String id;
+  const EditScreen();
 
   @override
   _EditScreenState createState() => _EditScreenState();
@@ -39,11 +37,11 @@ class _EditScreenState extends State<EditScreen> {
   final _form = GlobalKey<FormState>();
 
   void _saveAndEdit() {
-    if (_form.currentState!.validate()) {
-      _form.currentState!.save();
-      Provider.of<CardProvider>(context, listen: false).updateCard(_emptyCard);
-      Navigator.of(context).pop();
-    }
+    // if (_form.currentState!.validate()) {
+    //   _form.currentState!.save();
+    //   BlocProvider.of<CardsBloc>(context, listen: false).updateCard(_emptyCard);
+    //   Navigator.of(context).pop();
+    // }
   }
 
   @override
@@ -51,7 +49,7 @@ class _EditScreenState extends State<EditScreen> {
     if (_isInit) {
       final card = ModalRoute.of(context)!.settings.arguments as Card;
       if (card.id != null) {
-        _emptyCard = Provider.of<CardProvider>(context, listen: false)
+        _emptyCard = BlocProvider.of<CardsBloc>(context, listen: false)
             .findById(card.id!);
       }
       super.didChangeDependencies();
@@ -82,9 +80,7 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final String id = ModalRoute.of(context)!.settings.arguments as String;
-
-    final card = Provider.of<CardsBloc>(context).findById(id);
+    var card = ModalRoute.of(context)!.settings.arguments as Card;
 
     _nameController.text = card.name ?? '';
     _idController.text = card.id ?? '';
