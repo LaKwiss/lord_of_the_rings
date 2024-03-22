@@ -20,13 +20,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didChangeDependencies() async {
     if (_isInit) {
-      await Provider.of<CardProvider>(context, listen: false)
-          .fetchAndSetCards();
-      await Provider.of<DeckProvider>(context, listen: false)
-          .fetchAndSetDecks();
-      await Provider.of<ScenarioProvider>(context, listen: false)
-          .fetchAndSetScenarios();
-      BlocProvider.of<CardsBloc>(context).add(FetchAndSetCards());
+      // await Provider.of<CardProvider>(context, listen: false)
+      //     .fetchAndSetCards();
+      // await Provider.of<DeckProvider>(context, listen: false)
+      //     .fetchAndSetDecks();
+      // await Provider.of<ScenarioProvider>(context, listen: false)
+      //     .fetchAndSetScenarios();
+      // BlocProvider.of<CardsBloc>(context).add(FetchAndSetCards());
     }
     _isInit = false;
     super.didChangeDependencies();

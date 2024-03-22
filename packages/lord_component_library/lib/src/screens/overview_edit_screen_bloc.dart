@@ -9,6 +9,8 @@ class OverviewEditScreenBloc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<CardsBloc>().add(FetchAndSetCards());
+
     return BlocBuilder<CardsBloc, CardsState>(
       builder: (context, state) {
         return Scaffold(

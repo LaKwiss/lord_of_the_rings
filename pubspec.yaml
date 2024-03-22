@@ -19,6 +19,7 @@ dependencies:
     path: packages/lord_component_library
   google_fonts: ^6.2.1
   flutter_bloc: ^8.1.4
+  go_router: ^13.2.1
 
 dev_dependencies:
   flutter_test:

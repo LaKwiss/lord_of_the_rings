@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:lord_repository/lord_repository.dart';
@@ -27,6 +29,8 @@ class CardsBloc extends Bloc<CardsEvent, CardsState> {
 
   Future<void> _onDeleteCards(
       DeleteCard event, Emitter<CardsState> emit) async {
+    log('DeleteCard');
+
     try {
       await cardRepository.deleteCard(event.card);
       final cards = await cardRepository.getAllCards();
