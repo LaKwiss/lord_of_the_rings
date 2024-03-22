@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart' hide Card;
 import 'package:lord_repository/lord_repository.dart';
 import 'package:lord_bloc/lord_bloc.dart';
@@ -6,7 +8,9 @@ import 'package:provider/provider.dart';
 class EditScreen extends StatefulWidget {
   static const routeName = '/edit';
 
-  const EditScreen();
+  EditScreen({required this.id});
+
+  final String id;
 
   @override
   _EditScreenState createState() => _EditScreenState();
@@ -78,7 +82,9 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final card = ModalRoute.of(context)!.settings.arguments as Card;
+    final String id = ModalRoute.of(context)!.settings.arguments as String;
+
+    final card = Provider.of<CardsBloc>(context).findById(id);
 
     _nameController.text = card.name ?? '';
     _idController.text = card.id ?? '';

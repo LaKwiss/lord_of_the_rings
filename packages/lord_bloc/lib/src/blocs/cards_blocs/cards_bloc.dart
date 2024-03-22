@@ -39,4 +39,9 @@ class CardsBloc extends Bloc<CardsEvent, CardsState> {
       emit(state.copyWith(status: CardsStatus.failure));
     }
   }
+
+  Card findById(String id) {
+    final cards = state.cards;
+    return cards.firstWhere((element) => element.id == id);
+  }
 }

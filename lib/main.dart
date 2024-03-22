@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lord_bloc/lord_bloc.dart';
@@ -38,6 +40,17 @@ class MyApp extends StatelessWidget {
             name: 'overviewEditScreenBloc',
             path: '/overviewEditScreenBloc',
             builder: (context, state) => const OverviewEditScreenBloc()),
+        GoRoute(
+          name: 'editScreen',
+          path: '/editScreen/:id',
+          builder: (context, state) {
+            late String id;
+            log(state.pathParameters.toString());
+            id = state.pathParameters['id']!;
+            log(id);
+            return EditScreen(id: id);
+          },
+        ),
       ],
     );
 

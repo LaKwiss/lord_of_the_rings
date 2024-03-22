@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lord_bloc/lord_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class OverviewEditScreenBloc extends StatelessWidget {
   const OverviewEditScreenBloc({super.key});
@@ -40,11 +41,14 @@ class OverviewEditScreenBloc extends StatelessWidget {
                           icon: Icon(Icons.edit),
                           color: Colors.green,
                           onPressed: () {
-                            // Navigator.pushNamed(
-                            //   context,
-                            //   EditScreen.routeName,
-                            //   arguments: card,
-                            // );
+                            try {
+                              context.read<CardsBloc>().findById(card.id!);
+                              context
+                                  .go('/editScreen', extra: {'id': card.id!});
+                              log(card.name.toString());
+                            } catch (e) {
+                              log(e.toString());
+                            }
                           },
                         ),
                       ),
